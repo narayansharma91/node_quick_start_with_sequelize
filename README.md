@@ -33,14 +33,15 @@ npx sequelize db:seed:all
 nodemon index.js
 ```
 ### Directory/File Structure
+* index.js
 * app
-* repo
-* routes
-* sequelize
-* services
-* util
-* app.js
-* config.js
+  - repo
+  - routes
+  - sequelize
+  - services
+  - util
+ * app.js
+ * config.js
 
 ### Packages
 
