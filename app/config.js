@@ -3,7 +3,7 @@ require('dotenv').config();
 const environment = process.env.ENV || 'development';
 const config = {
   development: {
-    port: 4001,
+    port: 4000,
   },
   production: {
     port: process.env.PORT || 4000,

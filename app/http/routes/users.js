@@ -1,8 +1,10 @@
+const { userCreateValidationRules } = require('./../request/users/create_user');
+
 const registerUserRoutes = ({
   Router,
   services: {
-    userService: { getUserService, getUserDetailService },
-    registerAutoLoad: { apiResponse },
+    userService: { getUserService, getUserDetailService, createUserService },
+    registerAutoLoad: { apiResponse, validationResponse },
   },
 }) => {
   const router = Router();
@@ -26,6 +28,19 @@ const registerUserRoutes = ({
       };
     }),
   );
+  router.post(
+    '/',
+    userCreateValidationRules(),
+    validationResponse,
+    apiResponse(async (req) => {
+      const user = await createUserService(req.body);
+      return {
+        status: 200,
+        data: user,
+      };
+    }),
+  );
+
 
   return router;
 };

@@ -17,9 +17,11 @@ const userRepo = ({ models: { User, UserType } }) => {
       },
     ],
   });
+  const createUser = data => User.create(data);
   return {
     getUsers,
     getUserDetail,
+    createUser,
   };
 };
 module.exports = {
