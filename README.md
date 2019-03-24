@@ -68,38 +68,39 @@ nodemon index.js
 ```
 npx sequelize model:generate --name Category --attributes name:string 
 ``` 
-- Create repo file `category.js` inside app/repo directory. Write some scripts on that file.
+- Create repo file `categories.js` inside `app/repo` directory. Write some scripts on that file.
 
 ```
-const categoryRepo = ({ models: { Category } }) => {
+const categoriesRepo = ({ models: { Category } }) => {
   const createCategory = data => Category.create(data);
   return {
     createCategory,
   };
 };
 module.exports = {
-  categoryRepo,
+  categoriesRepo,
 };
 
 ```
 - Register this repo on `app/repo/index.js` file.
 ```
 const { userRepo } = require('./users');
-const { categoryRepo } = require('./category');
+const { categoriesRepo } = require('./categories');
+
 const registerAllRepos = ({ models }) => ({
   userRepo: userRepo({ models }),
-  categoryRepo: categoryRepo({ models }),
+  categoriesRepo: categoriesRepo({ models }),
 });
 module.exports = {
   registerAllRepos,
 };
 ```
-- Create service file `category.js` inside app/services directory.
+- Create service file `categories.js` inside `app/services` directory.
 
 ```
-const categoryService = ({
+const categoriesService = ({
   repos: {
-    categoryRepo: { createCategory },
+    categoriesRepo: { createCategory },
   },
 }) => {
   const createCategoryService = (data) => {
@@ -107,40 +108,51 @@ const categoryService = ({
   };
   return { createCategoryService };
 };
-module.exports = { categoryService };
+module.exports = { categoriesService };
 
 ```
 - Register your service inside `app/services/index.js` file.
 
 ```
 const { userService } = require('./users');
-const { categoryService } = require('./category');
+const { categoriesService } = require('./categories');
 
 const registerAllServices = ({ repos }) => ({
   userService: userService({ repos }),
-  categoryService: categoryService({ repos }),
+  categoriesService: categoriesService({ repos }),
 });
 module.exports = {
   registerAllServices,
 };
 
 ```
+- Create `create_category.js` file inside `app/http/request/category` directory to add validation rules.
 
-- Create routes `category.js` inside `app/http/routes` directory.
 ```
-const { userCreateValidationRules } = require('./../request/users/create_user');
+const { check } = require('express-validator/check');
 
-const registerUserRoutes = ({
+const categoryCreateValidationRules = () => [
+  check('name')
+    .exists()
+    .withMessage('category name should not be empty'),
+];
+module.exports = { categoryCreateValidationRules };
+```
+- Create routes `categories.js` inside `app/http/routes/` directory.
+```
+const { categoryCreateValidationRules } = require('./../request/category/create_category');
+
+const registerCategoriesRoutes = ({
   Router,
   services: {
-    categoryService: { createCategoryService },
+    categoriesService: { createCategoryService },
     registerAutoLoad: { apiResponse, validationResponse },
   },
 }) => {
   const router = Router();
   router.post(
     '/',
-    userCreateValidationRules(),
+    categoryCreateValidationRules(),
     validationResponse,
     apiResponse(async (req) => {
       const category = await createCategoryService(req.body);
@@ -152,8 +164,24 @@ const registerUserRoutes = ({
   );
   return router;
 };
-module.exports = { registerCategoryRoutes };
+module.exports = { registerCategoriesRoutes };
 
+```
+
+
+-  Register `categories.js` routes inside `app/app.js` file.
+
+```
+const { Router } = require('express');
+const { registerUserRoutes } = require('./../app/http/routes/users');
+const { registerCategoriesRoutes } = require('./../app/http/routes/categories');
+
+const bootstrapApplication = ({ services, app }) => {
+  app.use('/users', registerUserRoutes({ Router, services }));
+   app.use('/categories', registerCategoriesRoutes({ Router, services }));
+  
+};
+module.exports = { bootstrapApplication };
 ```
 
 
