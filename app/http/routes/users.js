@@ -41,7 +41,6 @@ const registerUserRoutes = ({
     }),
   );
 
-
   return router;
 };
 module.exports = { registerUserRoutes };

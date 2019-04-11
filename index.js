@@ -17,5 +17,5 @@ const services = {
 };
 bootstrapApplication({ services, app });
 /*  eslint-disable-next-line no-console */
-console.log(`application shart ${port}`);
+console.log(`application start at ${port}`);
 app.listen(port);

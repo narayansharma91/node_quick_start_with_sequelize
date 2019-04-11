@@ -14,27 +14,30 @@
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
-    "prettier": "1.16.4"
+    "prettier": "1.16.4",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "./node_modules/.bin/prettier index.js --write && ./node_modules/.bin/eslint index.js --fix && ./node_modules/.bin/prettier app/*.js --write && ./node_modules/.bin/eslint app/*.js --fix && ./node_modules/.bin/prettier app/**/*.js --write && ./node_modules/.bin/eslint app/**/*.js --fix",
+    "test": "mocha --recursive",
+    "format": "./sh/formatting.sh",
     "setup": "cp -i .env.example .env"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/narayansharma91/node_best_practice.git"
+    "url": "https://github.com/narayansharma91/node_quick_start.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/narayansharma91/node_best_practice/issues"
+    "url": "https://github.com/narayansharma91/node_quick_start.git/issues"
   },
-  "homepage": "https://github.com/narayansharma91/node_best_practice#readme"
+  "homepage": "https://github.com/narayansharma91/node_quick_start.git#readme"
 }

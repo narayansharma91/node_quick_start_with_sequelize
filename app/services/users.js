@@ -5,10 +5,11 @@ const userService = ({
 }) => {
   const getUserService = () => getUsers();
   const getUserDetailService = id => getUserDetail(id);
-  const createUserService = (data) => {
-    console.log(data);
-    return createUser(data);
+  const createUserService = data => createUser(data);
+  return {
+    getUserService,
+    getUserDetailService,
+    createUserService,
   };
-  return { getUserService, getUserDetailService, createUserService };
 };
 module.exports = { userService };
