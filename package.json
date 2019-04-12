@@ -25,8 +25,8 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "mocha --recursive",
-    "format": "./sh/formatting.sh",
+    "test": "mocha --recursive --env NODE_ENV=test",
+    "format": "./formatting.sh",
     "setup": "cp -i .env.example .env"
   },
   "repository": {
