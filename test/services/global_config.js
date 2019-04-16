@@ -1,6 +1,6 @@
 const { before, after } = require('mocha');
 const express = require('express');
-const bodyParser = require('body-parser');
+const { urlencoded, json } = require('body-parser');
 const { exec } = require('child_process');
 const { registerAllRepos } = require('./../../app/repo/index');
 const { registerAllServices } = require('./../../app/services/index');
@@ -16,7 +16,7 @@ before(async (done) => {
   done();
 });
 after((done) => {
-  models.sequelize.sync({ force: true });
+ models.sequelize.sync({ force: true });
   setTimeout(() => {
     models.sequelize.close();
   }, 5000);
@@ -25,8 +25,8 @@ after((done) => {
 
 const startApplication = async () => {
   const app = express();
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
+  app.use(urlencoded({ extended: false }));
+  app.use(json());
   const repos = await registerAllRepos({ models });
   const services = {
     ...(await registerAllServices({ repos })),
