@@ -19,6 +19,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "faker": "^4.1.0",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
     "prettier": "1.16.4",
