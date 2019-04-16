@@ -1,6 +1,6 @@
-const {
-  describe, it, beforeEach, before,
-} = require('mocha');
+const { describe, it, beforeEach } = require('mocha');
+const { assert } = require('chai');
+
 const { services, models } = require('./global_config');
 const userTypes = require('./../../app/factories/user_types');
 const { singleFakeUser } = require('./../../app/factories/fake_users');
@@ -8,8 +8,8 @@ const { singleFakeUser } = require('./../../app/factories/fake_users');
 let allServices = '';
 let userService = '';
 let allModels;
+let userId;
 describe('User services', async () => {
-  before(async () => {});
   beforeEach(async () => {
     allServices = await services;
     /*  eslint-disable-next-line prefer-destructuring */
@@ -18,6 +18,19 @@ describe('User services', async () => {
   });
   it('userService#createUserService()', async () => {
     await allModels.UserType.bulkCreate(userTypes);
-    await userService.createUserService(singleFakeUser);
+    const fakeUser = singleFakeUser();
+    const userInfo = await userService.createUserService(fakeUser);
+    userId = userInfo.id;
+    assert.isNotNull(userInfo, 'Unable to create user.');
+  });
+
+  it('userService#getUserService()', async () => {
+    const users = await userService.getUserService();
+    assert.isNotNull(users, 'Unable to load users.');
+  });
+
+  it('userService#getUserService()', async () => {
+    const user = await userService.getUserDetailService(userId);
+    assert.isNotNull(user, 'Unable to load user details.');
   });
 });

@@ -16,7 +16,7 @@ before(async (done) => {
   done();
 });
 after((done) => {
- models.sequelize.sync({ force: true });
+  models.sequelize.sync({ force: true });
   setTimeout(() => {
     models.sequelize.close();
   }, 5000);
