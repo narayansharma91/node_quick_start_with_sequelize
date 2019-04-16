@@ -1,3 +1,4 @@
+const UserTypes =  require('./../../factories/user_types');
 module.exports = {
   up: (queryInterface, Sequelize) =>
     /*
@@ -10,18 +11,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    queryInterface.bulkInsert("UserTypes", [
-      {
-        name: "Admin",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: "User",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ]),
+    queryInterface.bulkInsert("UserTypes", UserTypes),
 
   down: (queryInterface, Sequelize) =>
     /*
