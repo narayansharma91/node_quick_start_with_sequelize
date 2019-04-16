@@ -2,6 +2,8 @@ const {
   describe, it, beforeEach, before,
 } = require('mocha');
 const { services, models } = require('./global_config');
+const userTypes = require('./../../app/factories/user_types');
+const { singleFakeUser } = require('./../../app/factories/fake_users');
 
 let allServices = '';
 let userService = '';
@@ -15,25 +17,7 @@ describe('User services', async () => {
     allModels = await models;
   });
   it('userService#createUserService()', async () => {
-    await allModels.UserType.create(
-      {
-        name: 'Admin',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'User',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    );
-    await userService.createUserService({
-      firstName: 'Narayan1',
-      lastName: 'Sharma',
-      email: 'demo@gmail.com',
-      userTypeId: 1,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
+    await allModels.UserType.bulkCreate(userTypes);
+    await userService.createUserService(singleFakeUser);
   });
 });
