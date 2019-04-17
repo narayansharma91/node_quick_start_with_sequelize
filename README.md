@@ -1,3 +1,13 @@
+### Included features
+- Well structure of the file for a large project.
+- Configured database connection.
+- Exception Handling
+- Unit Test
+- Validation
+- Linter (eslint, prettier) for code guideline and increase the readability of the code.
+- ACL --in progress
+- API Documentation --in progress
+
 ### Quick setup
 
 * Download and install npm from offical website if you don't have already (https://nodejs.org/en/) 
