@@ -5,8 +5,8 @@
 - Unit Test
 - Validation
 - Linter (eslint, prettier) for code guideline and increase the readability of the code.
-- ACL --in progress
-- API Documentation --in progress
+- ACL `--in progress`
+- API Documentation `--in progress`
 
 ### Quick setup
 
