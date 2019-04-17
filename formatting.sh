@@ -13,5 +13,8 @@ $eslint app/sequelize/models/*.js --fix
 $prettier app/sequelize/seeders/*.js --write
 $prettier app/**/*.js --write 
 $eslint app/**/*.js --fix
+$prettier app/util/**/*.js --write 
+$eslint app/util/**/*.js --fix
+
 $prettier test/**/*.js --write
 $eslint test/**/*.js --fix
