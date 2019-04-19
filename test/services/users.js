@@ -1,10 +1,12 @@
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 const { describe, it, beforeEach } = require('mocha');
-const { assert } = require('chai');
-
-const { services, models } = require('./global_config');
 const userTypes = require('./../../app/factories/user_types');
+const { services, models } = require('./global_config');
 const { singleFakeUser } = require('./../../app/factories/fake_users');
 
+const { assert, expect } = chai;
+chai.use(chaiAsPromised);
 let allServices = '';
 let userService = '';
 let allModels;
@@ -32,5 +34,8 @@ describe('User services', async () => {
   it('userService#getUserService()', async () => {
     const user = await userService.getUserDetailService(userId);
     assert.isNotNull(user, 'Unable to load user details.');
+  });
+  it('userService#getUserService()#notfoundExeption', async () => {
+    await expect(userService.getUserDetailService(1001)).to.be.rejected;
   });
 });
