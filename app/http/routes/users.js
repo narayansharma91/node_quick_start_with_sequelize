@@ -26,7 +26,6 @@ const registerUserRoutes = ({
   router.get(
     '/:id',
     apiResponse(async (req) => {
-      // eslint-disable-line consistent-return
       try {
         const user = await getUserDetailService(req.params.id);
         return {
