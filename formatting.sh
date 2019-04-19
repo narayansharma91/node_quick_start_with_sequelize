@@ -11,6 +11,7 @@ $eslint app/http/routes/**/*.js --fix
 $prettier app/sequelize/models/*.js --write 
 $eslint app/sequelize/models/*.js --fix
 $prettier app/sequelize/seeders/*.js --write
+$eslint app/sequelize/seeders/*.js --fix
 $prettier app/**/*.js --write 
 $eslint app/**/*.js --fix
 $prettier app/util/**/*.js --write 
