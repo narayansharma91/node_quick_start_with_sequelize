@@ -6,6 +6,8 @@
 - Validation
 - Linter (eslint, prettier) for code guideline and increase the readability of the code.
 
+<hr/>
+
 ### Quick setup
 
 * Download and install npm from offical website if you don't have already (https://nodejs.org/en/) 
@@ -42,6 +44,9 @@ npx sequelize db:seed:all
 ```
 nodemon index.js
 ```
+
+<hr/>
+
 ### Directory/File Structure
 - **index.js:** The index.js file is the entry point of the application where all the services, packages are registered to bootstrap your application.
 - **app :** The app directory holds all application source code eg. services, repo etc.
