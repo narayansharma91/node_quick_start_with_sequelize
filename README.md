@@ -1,6 +1,6 @@
 ### Included features
 - Well structure of the file for a large project.
-- Configured database connection.
+- Configured database connection. (sequelize)
 - Exception Handling
 - Unit Test
 - Validation
