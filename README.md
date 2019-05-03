@@ -13,7 +13,7 @@
 * Download and install npm from offical website if you don't have already (https://nodejs.org/en/) 
 * Clone this project using below command.
 ```
-git clone https://github.com/narayansharma91/node_quick_start.git
+git clone https://github.com/narayansharma91/node_quick_start_with_sequelize.git
 ```
 * Goto your project directory by command line.
 ```
