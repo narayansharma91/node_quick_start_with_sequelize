@@ -1,12 +1,22 @@
 ### Included features
 - Well structure of the file for a large project.
-- Configured database connection. (sequelize)
-- Exception Handling
+- Configured database connection.
+- Sequelize : ORM for node.js
 - Unit Test
 - Validation
 - Linter (eslint, prettier) for code guideline and increase the readability of the code.
 
-<hr/>
+<hr />
+
+### Application File/Directory Structure
+<img src="https://github.com/narayansharma91/repo_images/blob/master/node_quick_start_with_sequelize/node_with_sequelize_directory_structure.jpg" width="100%" height="350" />
+
+<hr />
+
+### Application layer Architecture
+![alt text](https://github.com/narayansharma91/repo_images/blob/master/node_quick_start_with_sequelize/node_quick_start_with_sequelize_application_layer.jpg)
+
+<hr />
 
 ### Quick setup
 
@@ -17,7 +27,7 @@ git clone https://github.com/narayansharma91/node_quick_start_with_sequelize.git
 ```
 * Goto your project directory by command line.
 ```
-cd /path/of/clone directory
+cd node_quick_start_with_sequelize
 ```
 * Install dependency of project using given below command
 ```
@@ -36,44 +46,17 @@ copy manually .env.example and rename with .env name
 ```
 npx sequelize db:migrate
 ```
-* Seed database seed (Demo User) using below command.
-```
-npx sequelize db:seed:all
-```
 * Start project using below command.
 ```
 nodemon index.js
 ```
 
-<hr/>
+<hr />
 
-### Directory/File Structure
-- **index.js:** The index.js file is the entry point of the application where all the services, packages are registered to bootstrap your application.
-- **app :** The app directory holds all application source code eg. services, repo etc.
-  
-  - **http :** The http directory contains two sub directory for store validation rules and register application routes.
-    - **request :** The request directory containts all validation rules for every post request. You can create sub directory as per your requirements for readablility purpose. I'm using express-validator for defining validation rules. Please have a look official website for better understanding about express-validator.
-    
-    - **routes :** The routes directory contains all the application routes. You can create sub directory based on modules as already created one directory(users) inside routes.
-   - **repo :** The repo directory holds all the files which is associated with sql query. For every model it should be one    seperate file inside repo directory where all sql query will goes to inside that file for that specific model.
-   
-  - **sequelize :** This directory contains multiple subdirectory which are associated with sequelize package. 
-  
-    - **models :** The models directory holds all the application models. Inside those files might have models relationship and model behavior based on requirements.  
-    
-    - **migrations :** This directory holds all the database schema. We are using sequelize migration for manage database schema.
-    
-    - **seeders :** This directory holds all the demo data which can be used for seed data to specific tables. 
-    
-    - **database.js :** This file contains database configurations based on your environments.
-    
-  - **services :** The services directory holds all the application services. All the business logic should include in service file. Service file only access repo files. Inside service file get result set from repo file and manupulate the result based on business logic. When user hit specific routes, That request goes to specific service to manupulate that request. Its same as controller in MVC design pattern.
-  
-  - **util :** The util directory holds helper files which can be reusable all over the application. 
-  
- - **app.js :** The app.js file is responsible for register all the routes.
- 
- - **config.js :** The config.js file is responsible for provide application level configuration based on environment. 
+ ### Official website/url for different packages.
+ - Validation (express-validator) : https://express-validator.github.io/docs/
+ - ORM (sequelize) : http://docs.sequelizejs.com/
+
 
 ```
 
